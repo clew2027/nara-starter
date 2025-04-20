@@ -14,6 +14,7 @@
   </head>
   <body>
     <h1 id="welcome-message">Who do you want to care for today?</h1>
+    
 
     <!-- 
   <div id="deer1-circle" class="deer-circle"></div>
@@ -22,6 +23,7 @@
   <div id="deer4-circle" class="deer-circle"></div>
   <div id="deer5-circle" class="deer-circle"></div>
     -->
+    
 
     <div id="categories-container">
       <button class="category-button" data-category="daily">
@@ -35,15 +37,46 @@
     </div>
 
     <!-- Hover Circles -->
-    <div id="deer1-circle" class="deer-circle"></div>
-    <div id="deer2-circle" class="deer-circle"></div>
-    <div id="deer3-circle" class="deer-circle"></div>
-    <div id="deer4-circle" class="deer-circle"></div>
-    <div id="deer5-circle" class="deer-circle"></div>
-    <div id="deer6-circle" class="deer-circle"></div>
+    <div class="deer-container">
+      <div id="deer1-circle" class="deer-circle"></div>
+      <div id="encouragement-bubble" class="hidden">
+        <p id="encouragement-text"></p>
+      </div>
+      <div id="deer2-circle" class="deer-circle"></div>
+      <div id="encouragement-bubble" class="hidden">
+        <p id="encouragement-text"></p>
+      </div>
+      <div id="deer3-circle" class="deer-circle"></div>
+      <div id="encouragement-bubble" class="hidden">
+        <p id="encouragement-text"></p>
+      </div>
+      <div id="deer4-circle" class="deer-circle"></div>
+      <div id="encouragement-bubble" class="hidden">
+        <p id="encouragement-text"></p>
+      </div>
+      <div id="deer5-circle" class="deer-circle"></div>
+      <div id="encouragement-bubble" class="hidden">
+        <p id="encouragement-text"></p>
+      </div>
+      <div id="deer6-circle" class="deer-circle"></div>
+      <div id="encouragement-bubble" class="hidden">
+        <p id="encouragement-text"></p>
+      </div>
+    </div>
+
 
     <div id="tasks-container" class="hidden">
       <ul id="task-list"></ul>
+    </div>
+
+    <div id="mood-tracker">
+      <p>How are you feeling today?</p>
+      <div id="mood-options">
+        <button class="mood-btn" data-mood="happy">😊</button>
+        <button class="mood-btn" data-mood="neutral">😐</button>
+        <button class="mood-btn" data-mood="stressed">😩</button>
+      </div>
+      <div id="mood-display"></div>
     </div>
 
     <!-- Reset Button -->
@@ -64,7 +97,6 @@
         </div>
       </div>
     </div>
-
     <script src="scripts/Sortable.min.js"></script>
     <script src="newTab.js"></script>
   </body>

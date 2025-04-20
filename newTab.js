@@ -670,6 +670,23 @@ document.addEventListener("DOMContentLoaded", () => {
         const originalIndex = tasks.indexOf(task);
         tasks[originalIndex].completed = checkbox.checked;
 
+        if (checkbox.checked) {
+          const bubble = document.getElementById("encouragement-bubble");
+          const bubbleText = document.getElementById("encouragement-text");
+          
+          bubbleText.textContent = "great job!!!";
+          console.log(bubbleText.textContent);
+          console.log(bubble)
+          bubble.classList.remove("hidden");
+          bubble.classList.add("show");
+
+          setTimeout(() => {
+            bubble.classList.remove("show");
+            bubble.classList.add("hidden");
+          }, 3000);
+        }
+      
+
         if (tasks[originalIndex].completed) {
           const deleteButton = taskItem.querySelector(".delete-task");
           if (deleteButton) deleteButton.remove();
@@ -946,6 +963,39 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       },
     });
+
+    // Add this near your other event listeners
+document.querySelectorAll('.mood-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Update UI
+    document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    
+    // Save to storage
+    const mood = btn.dataset.mood;
+    chrome.storage.local.set({ 
+      mood: { 
+        state: mood, 
+        date: new Date().toDateString() 
+      } 
+    });
+
+    // Show confirmation
+    document.getElementById('mood-display').textContent = `You're feeling ${mood} today.`;
+  });
+});
+
+// Load saved mood on startup
+chrome.storage.local.get('mood', (data) => {
+  if (data.mood && data.mood.date === new Date().toDateString()) {
+    const btn = document.querySelector(`.mood-btn[data-mood="${data.mood.state}"]`);
+    if (btn) {
+      btn.classList.add('selected');
+      document.getElementById('mood-display').textContent = 
+        `You're feeling ${data.mood.state} today.`;
+    }
+  }
+});
 
     tasksContainer.classList.remove("hidden");
   }
